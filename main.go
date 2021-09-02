@@ -67,8 +67,11 @@ func GetDB() *gorm.DB {
 
 	Username := "root"
 	Password := "password"
-	Address := "localhost:3306"
+	HOST:="localhost"
+	PORT:="3308"
 	Database := "gorm"
+	Address := fmt.Sprintf("%s:%s",HOST,PORT)
+
 
 	connectInfo := fmt.Sprintf( //gcp
 		"%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=UTC",
@@ -93,7 +96,7 @@ func GetDB() *gorm.DB {
 		return nil
 	}
 
-	maxConnections := 100
+	maxConnections := 10
 	// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
 	sqldb.SetMaxIdleConns(maxConnections)
 	// SetMaxOpenConns sets the maximum number of open connections to the database.
