@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"time"
 )
 
@@ -82,7 +81,7 @@ func GetDB() *gorm.DB {
 	)
 
 	db, err := gorm.Open(mysql.Open(connectInfo), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Info),
+		//Logger: logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
 		fmt.Println(err)
