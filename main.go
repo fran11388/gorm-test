@@ -19,7 +19,7 @@ type User struct {
 type UserRepo struct {}
 
 func (u *UserRepo) ChargeMoney(DB *gorm.DB, name string, amount int) {
-	DB.Session(&gorm.Session{NewDB: false}).Exec("update user SET `balance`=`balance`+ ? where name=?", amount, name)
+	DB.Session(&gorm.Session{NewDB: true}).Exec("update user SET `balance`=`balance`+ ? where name=?", amount, name)
 }
 
 func main() {
